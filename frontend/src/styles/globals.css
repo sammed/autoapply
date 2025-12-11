@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Define CSS variables for light mode (default) */
+:root {
+  --foreground-rgb: 0, 0, 0;
+  /* Text color */
+  --background-start-rgb: 214, 219, 220;
+  /* Background start color */
+  --background-end-rgb: 255, 255, 255;
+  /* Background end color */
+  --primary-rgb: 0, 122, 255;
+  /* Example primary color */
+}
+
+/* Dark mode colors */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    /* Light text */
+    --background-start-rgb: 18, 18, 18;
+    /* Dark background start */
+    --background-end-rgb: 34, 34, 34;
+    /* Dark background end */
+    --primary-rgb: 10, 132, 255;
+    /* Example primary color for dark mode */
+  }
+}
+
+/* Global styles for body */
+body {
+  color: rgb(var(--foreground-rgb));
+  /* Text color */
+  background: linear-gradient(to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  /* Background gradient */
+  transition: background 0.5s, color 0.5s;
+  /* Smooth transition for theme change */
+}
+
+/* Utility class for balanced text wrapping */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Tailwind dark mode utility for finer control */
+@layer utilities {
+  .dark {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 18, 18, 18;
+    --background-end-rgb: 34, 34, 34;
+    --primary-rgb: 10, 132, 255;
+  }
+
+  /* Example: Dark mode background utility */
+  .bg-dark-start {
+    background-color: rgb(var(--background-start-rgb));
+  }
+
+  .bg-dark-end {
+    background-color: rgb(var(--background-end-rgb));
+  }
+}
